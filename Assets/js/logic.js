@@ -13,6 +13,8 @@ function startQuiz(){
     gameIntroEl.setAttribute('class','hide');
     //start timer
     timerId = setInterval(counter, 1000);
+    //Questions rendered
+    displayQuestions();
 }
 function displayQuestions(){
     //set attributes to removeAttribut('class', 'hide') on questionsEl and 
@@ -20,8 +22,10 @@ function displayQuestions(){
     //display question and choices at each index given
     //
     //increase currentindex on button click to go to the next question --> current index i++
-    questionEl.textContent = "Questions will go here!"
-    choicesEl.textContent = "Answers will go here BaZiNgA!"
+    questionEl.removeAttribute('class', 'hide');
+    choicesEl.removeAttribute('class', 'hide');
+    questionEl.textContent = "Questions will go here!";
+    choicesEl.textContent = "Answers will go here BaZiNgA!";
 }
 function counter(){
     timerEl.textContent = time;
