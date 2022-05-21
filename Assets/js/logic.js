@@ -24,8 +24,15 @@ function displayQuestions(){
     //increase currentindex on button click to go to the next question --> current index i++
     questionEl.removeAttribute('class', 'hide');
     choicesEl.removeAttribute('class', 'hide');
-    questionEl.textContent = "Questions will go here!";
+    // questionEl.textContent = "Questions will go here!";
     choicesEl.textContent = "Answers will go here BaZiNgA!";
+
+    questionEl.textContent = questions[currentIndex].question;
+    choicesEl.textContent = questions[currentIndex].choices;
+
+    //create a button for each choice using for each
+    
+
 }
 function counter(){
     timerEl.textContent = time;
