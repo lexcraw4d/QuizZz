@@ -3,8 +3,9 @@ let currentIndex = 0;
 let startButtonEl = document.getElementById('start-btn');
 let timerEl = document.getElementById('timer');
 let questionEl = document.getElementById('questions');
-var gameIntroEl = document.getElementById('game-intro');
-var timerId;
+let choicesEl = document.getElementById('choices');
+let gameIntroEl = document.getElementById('game-intro');
+let timerId;
 
 
 function startQuiz(){
@@ -14,7 +15,13 @@ function startQuiz(){
     timerId = setInterval(counter, 1000);
 }
 function displayQuestions(){
-
+    //set attributes to removeAttribut('class', 'hide') on questionsEl and 
+    //iterate over questions at each index
+    //display question and choices at each index given
+    //
+    //increase currentindex on button click to go to the next question --> current index i++
+    questionEl.textContent = "Questions will go here!"
+    choicesEl.textContent = "Answers will go here BaZiNgA!"
 }
 function counter(){
     timerEl.textContent = time;
