@@ -25,13 +25,24 @@ function displayQuestions(){
     questionEl.removeAttribute('class', 'hide');
     choicesEl.removeAttribute('class', 'hide');
     // questionEl.textContent = "Questions will go here!";
-    choicesEl.textContent = "Answers will go here BaZiNgA!";
+    // choicesEl.textContent = "Answers will go here BaZiNgA!";
 
-    questionEl.textContent = questions[currentIndex].question;
-    choicesEl.textContent = questions[currentIndex].choices;
+    //Assigning the index of current question and choices to respective containers
+    let currentQuestion = questions[currentIndex].question;
+    let currentChoices = questions[currentIndex].choices;
 
-    //create a button for each choice using for each
-    
+    questionEl.textContent = currentQuestion;
+
+    //later change to append btns
+    choicesEl.textContent = currentChoices;
+
+    //create a button for each choice using for each choice on displayed question
+    currentChoices.forEach(choice => {
+        let choiceBtns = document.createElement("button");
+        console.log(choice)
+        choiceBtns.textContent = currentChoices;
+        choicesEl.append(choiceBtns)
+    });
 
 }
 function counter(){
