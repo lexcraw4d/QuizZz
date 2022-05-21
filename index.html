@@ -4,16 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./Assets/css/styles.css">
     <title> Sports Quiz</title>
 </head>
 <body>
     <header>
-        <div id="timer"><span>0</span></div>
+        <div><span id="timer">0</span></div>
         <div><a>Highscores</a></div>
     </header>
     <main>
-        <h1>Get ready to test your sports knowledge!</h1>
-        <button id="start-btn">Start</button>
+        <div id="game-intro">
+            <h1>Get ready to test your sports knowledge!</h1>
+            <button id="start-btn">Start</button>
+        </div>
+        <div id="questions" class="hide"></div>
+        <div id="choices"></div>
     </main>
 </body>
 <script src="./Assets/js/logic.js"></script>
