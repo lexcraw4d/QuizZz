@@ -81,10 +81,17 @@ if(currentIndex === questions.length){
 }
 
 function endGame() {
+    let octoCatImg = document.createElement('img');
+    octoCatImg.src = "Assets/octocat.png";
     alert ("Game Over")
     //stop timer
     clearInterval(timerId);
     //show screen element game over
+    questionEl.textContent = "Game over.";
+    choicesEl.textContent = "";
+
+   
+    choicesEl.appendChild(octoCatImg);
     
 }
 function counter(){
