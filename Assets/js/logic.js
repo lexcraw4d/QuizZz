@@ -8,6 +8,11 @@ let gameIntroEl = document.getElementById('game-intro');
 let timerId;
 
 
+//sound effects
+let sfxRight = new Audio("sfx/smw_save_menu.wav");
+let sfxIncorrect = new Audio ("sfx/smw_pipe.wav");
+
+
 function startQuiz(){
     //hide main game introduction
     gameIntroEl.setAttribute('class','hide');
@@ -30,7 +35,8 @@ function displayQuestions(){
     let currentQuestion = questions[currentIndex];
 
     questionEl.textContent = currentQuestion.question;
-
+    //Clear choices each time a new question is called to empty and render new btns
+    choicesEl.textContent = "";
     //later change to append btns
     //create a button for each choice using for each choice on displayed question
     currentQuestion.choices.forEach(function(choice, i) {
@@ -56,9 +62,17 @@ function questionClick (event) {
   //sounds eventually added
   console.log(parseInt(questions[currentIndex].answer))
   if (event.target.value != questions[currentIndex].answer){
-      console.log('Wrong')
+      console.log('Oops! Incorrect!')
+      sfxIncorrect.play();
   }
-  else (console.log('BAZINGA! Pass go and collect $200'))
+  else {
+    sfxRight.play()
+    console.log('Bazinga! Correct!')
+  }
+  
+
+currentIndex++;
+displayQuestions();
 }
 
 function counter(){
