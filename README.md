@@ -1,2 +1,2 @@
-# SportsQuiz
-A fun quiz to test your knowledge on sports
+# QuiZzZ
+A fun quiz to test your knowledge on anything!
