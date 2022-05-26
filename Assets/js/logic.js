@@ -72,9 +72,21 @@ function questionClick (event) {
   
 
 currentIndex++;
-displayQuestions();
+
+if(currentIndex === questions.length){
+    endGame()
+} else{
+    displayQuestions();
+}
 }
 
+function endGame() {
+    alert ("Game Over")
+    //stop timer
+    clearInterval(timerId);
+    //show screen element game over
+    
+}
 function counter(){
     timerEl.textContent = time;
     if(time > 0) {

@@ -19,5 +19,10 @@ let questions = [
     question: "What is my favorite color?",
     choices: ["Blue", "Pink", "Orange", "Red"],
     answer:"Red"
+},
+{
+    question: "Who is the best wife?",
+    choices: ["Sam"],
+    answer:"Sam"
 }
 ]
