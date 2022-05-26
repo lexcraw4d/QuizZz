@@ -54,6 +54,11 @@ function questionClick (event) {
   //else correct bazinga! 
   //time penality 
   //sounds eventually added
+  console.log(parseInt(questions[currentIndex].answer))
+  if (event.target.value != questions[currentIndex].answer){
+      console.log('Wrong')
+  }
+  else (console.log('BAZINGA! Pass go and collect $200'))
 }
 
 function counter(){
