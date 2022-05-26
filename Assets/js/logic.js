@@ -9,8 +9,8 @@ let timerId;
 
 
 //sound effects
-let sfxRight = new Audio("sfx/smw_save_menu.wav");
-let sfxIncorrect = new Audio ("sfx/smw_pipe.wav");
+let sfxRight = new Audio("Assets/sfx/smw_save_menu.wav");
+let sfxIncorrect = new Audio ("Assets/sfx/smw_pipe.wav");
 
 
 function startQuiz(){
