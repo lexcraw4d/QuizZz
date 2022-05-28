@@ -6,8 +6,8 @@ let questionEl = document.getElementById('questions');
 let choicesEl = document.getElementById('choices');
 let gameIntroEl = document.getElementById('game-intro');
 let containerEl = document.querySelector(".container");
-let correctEl = document.getElementById("correct");
-let wrongEl = document.getElementById("wrong");
+// let correctEl = document.getElementById("correct");
+let resultEl = document.getElementById("result");
 let timerId;
 
 
@@ -62,15 +62,27 @@ function questionClick (event) {
 //time penality 
 //console.log(parseInt(questions[currentIndex].answer))
   if (event.target.value != questions[currentIndex].answer){
+    resultEl.textContent = 'Oops!';
+    
+    //sound effect if wrong
     sfxIncorrect.play();
     time = time -10;
+
     nextQuestion();
   }
   else {
+    resultEl.textContent = 'Correct!'
+    // sound effect if correct
     sfxRight.play();
     time = time + 5;
+
     nextQuestion();
   } 
+    // flash right/wrong based on response
+     resultEl.setAttribute("class", "result")
+     setTimeout(function() {
+     resultEl.setAttribute("class", "result hide");
+     }, 1000);
 }
 
 function nextQuestion() {
