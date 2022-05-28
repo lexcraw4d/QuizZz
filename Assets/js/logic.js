@@ -1,10 +1,13 @@
-let time = 10;
+let time = 40;
 let currentIndex = 0;
 let startButtonEl = document.getElementById('start-btn');
 let timerEl = document.getElementById('timer');
 let questionEl = document.getElementById('questions');
 let choicesEl = document.getElementById('choices');
 let gameIntroEl = document.getElementById('game-intro');
+let containerEl = document.querySelector(".container");
+let correctEl = document.getElementById("correct");
+let wrongEl = document.getElementById("wrong");
 let timerId;
 
 
@@ -39,7 +42,7 @@ function displayQuestions(){
     choicesEl.textContent = "";
     //later change to append btns
     //create a button for each choice using for each choice on displayed question
-    currentQuestion.choices.forEach(function(choice, i) {
+    currentQuestion.choices.forEach(function(choice) {
         console.log(choice)
         let choiceBtns = document.createElement("button");
 
@@ -53,31 +56,29 @@ function displayQuestions(){
        
     }
     )
+    
 }
 function questionClick (event) {
-    console.log(event.target.value)
-  //if event.target.val != question[currentindex] val then wrong
-  //else correct bazinga! 
-  //time penality 
-  //sounds eventually added
-  console.log(parseInt(questions[currentIndex].answer))
+//time penality 
+//console.log(parseInt(questions[currentIndex].answer))
   if (event.target.value != questions[currentIndex].answer){
-      console.log('Oops! Incorrect!')
-      sfxIncorrect.play();
+    sfxIncorrect.play();
+    nextQuestion();
   }
   else {
     sfxRight.play()
-    console.log('Bazinga! Correct!')
-  }
-  
-
-currentIndex++;
-
-if(currentIndex === questions.length){
-    endGame()
-} else{
-    displayQuestions();
+    nextQuestion()
+  } 
 }
+
+function nextQuestion() {
+    if(currentIndex === questions.length - 1){
+    endGame()
+    } 
+    else{
+    currentIndex++;
+    displayQuestions();
+    }
 }
 
 function endGame() {
