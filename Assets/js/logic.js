@@ -1,16 +1,15 @@
-let time = 40;
 let currentIndex = 0;
+var time = 60;
 let startButtonEl = document.getElementById('start-btn');
 let timerEl = document.getElementById('timer');
 let questionEl = document.getElementById('questions');
 let choicesEl = document.getElementById('choices');
 let gameIntroEl = document.getElementById('game-intro');
-let containerEl = document.querySelector(".container");
+let containerEl = document.getElementById('container');
 // let correctEl = document.getElementById("correct");
 let resultEl = document.getElementById("result");
-let timerId;
-
-
+let endGameEl = document.getElementById("endGame");
+let timerFx;
 //sound effects
 let sfxRight = new Audio("Assets/sfx/smw_save_menu.wav");
 let sfxIncorrect = new Audio ("Assets/sfx/smw_pipe.wav");
@@ -20,19 +19,21 @@ function startQuiz(){
     //hide main game introduction
     gameIntroEl.setAttribute('class','hide');
     //start timer
-    timerId = setInterval(counter, 1000);
+    timerFx = setInterval(counter, 1000);
     //Questions rendered
     displayQuestions();
 }
+function counter(){
+    timerEl.textContent = time;
+    if(time > 0) {
+        time--
+    }
+};
 function displayQuestions(){
-    //set attributes to removeAttribut('class', 'hide') on questionsEl and 
-    //iterate over questions at each index
-    //display question and choices at each index given
+    
     //increase currentindex on button click to go to the next question --> current index i++
     questionEl.removeAttribute('class', 'hide');
     choicesEl.removeAttribute('class', 'hide');
-    // questionEl.textContent = "Questions will go here!";
-    // choicesEl.textContent = "Answers will go here BaZiNgA!";
 
     //Assigning the index of current question and choices to respective containers
     let currentQuestion = questions[currentIndex];
@@ -40,10 +41,10 @@ function displayQuestions(){
     questionEl.textContent = currentQuestion.question;
     //Clear choices each time a new question is called to empty and render new btns
     choicesEl.textContent = "";
-    //later change to append btns
+    
     //create a button for each choice using for each choice on displayed question
     currentQuestion.choices.forEach(function(choice) {
-        console.log(choice)
+        // console.log(choice)
         let choiceBtns = document.createElement("button");
 
         choiceBtns.setAttribute("value",choice)
@@ -55,26 +56,28 @@ function displayQuestions(){
         choicesEl.appendChild(choiceBtns)
        
     }
-    )
+)
     
 }
 function questionClick (event) {
-//time penality 
-//console.log(parseInt(questions[currentIndex].answer))
+
+  //console.log(parseInt(questions[currentIndex].answer))
   if (event.target.value != questions[currentIndex].answer){
     resultEl.textContent = 'Oops!';
-    
-    //sound effect if wrong
+    time -= 15;
+    if (time <= 0) {
+        timerEl.textContent = 0
+        endGame();
+      }
+    //sound effects if wrong answer
     sfxIncorrect.play();
-    time = time -10;
-
     nextQuestion();
   }
   else {
     resultEl.textContent = 'Correct!'
     // sound effect if correct
     sfxRight.play();
-    time = time + 5;
+    time += 5;
 
     nextQuestion();
   } 
@@ -86,9 +89,10 @@ function questionClick (event) {
 }
 
 function nextQuestion() {
-    if(currentIndex === questions.length - 1){
+    
+    if(currentIndex === questions.length - 1 ){
     endGame();
-    } 
+    }
     else{
     currentIndex++;
     displayQuestions();
@@ -96,24 +100,15 @@ function nextQuestion() {
 }
 
 function endGame() {
+    containerEl.setAttribute('class', 'hide')
     let octoCatImg = document.createElement('img');
     octoCatImg.src = "Assets/octocat.png";
-    alert ("Game Over")
     //stop timer
-    clearInterval(timerId);
-    //show screen element game over
-    questionEl.textContent = "Game over.";
-    choicesEl.textContent = "";
-
-   
-    choicesEl.appendChild(octoCatImg);
+    clearInterval(timerFx);
+    endGameEl.textContent = "Game Over!"
+    endGameEl.appendChild(octoCatImg);
     
 }
-function counter(){
-    timerEl.textContent = time;
-    if(time > 0) {
-        time--
-    }
-};
+
 
 startButtonEl.addEventListener('click', startQuiz);
