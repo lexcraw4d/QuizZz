@@ -63,17 +63,19 @@ function questionClick (event) {
 //console.log(parseInt(questions[currentIndex].answer))
   if (event.target.value != questions[currentIndex].answer){
     sfxIncorrect.play();
+    time = time -10;
     nextQuestion();
   }
   else {
-    sfxRight.play()
-    nextQuestion()
+    sfxRight.play();
+    time = time + 5;
+    nextQuestion();
   } 
 }
 
 function nextQuestion() {
     if(currentIndex === questions.length - 1){
-    endGame()
+    endGame();
     } 
     else{
     currentIndex++;
