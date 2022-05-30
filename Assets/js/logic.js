@@ -10,6 +10,7 @@ let initialsEl = document.getElementById('initials');
 let resultEl = document.getElementById("result");
 let endGameEl = document.getElementById("endGame");
 let timerFx;
+// let scoreContainer = []
 //sound effects
 let sfxRight = new Audio("Assets/sfx/smw_save_menu.wav");
 let sfxIncorrect = new Audio ("Assets/sfx/smw_pipe.wav");
@@ -113,12 +114,18 @@ function endGame() {
     endGameEl.appendChild(octoCatImg);
 }
     function highScores(){
-      let initials = document.getElementById('storeInitials').value;
+      let initials = document.getElementById('storeInitials').value.trim();
+      let scoreArray= JSON.parse(localStorage.getItem("scores")) || [];
       let results = {
         userIntials: initials,
         score: time
       }
-      console.log('results to be set to localStorage', results)
+      // Get saved data from localStorage
+     scoreArray.push(results)
+
+     localStorage.setItem('scores', JSON.stringify(scoreArray));
+    //  console.log('scoreArr', scoreArray)
+      
     
 }
 
