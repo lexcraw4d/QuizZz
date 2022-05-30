@@ -6,7 +6,7 @@ let questionEl = document.getElementById('questions');
 let choicesEl = document.getElementById('choices');
 let gameIntroEl = document.getElementById('game-intro');
 let containerEl = document.getElementById('container');
-// let correctEl = document.getElementById("correct");
+let initialsEl = document.getElementById('initials');
 let resultEl = document.getElementById("result");
 let endGameEl = document.getElementById("endGame");
 let timerFx;
@@ -103,13 +103,12 @@ function nextQuestion() {
 
 function endGame() {
     containerEl.setAttribute('class', 'hide')
+    initialsEl.removeAttribute('class', 'hide')
     let octoCatImg = document.createElement('img');
     octoCatImg.setAttribute('class', 'octoKitty')
     octoCatImg.src = "Assets/octocat.png";
-    
     //stop timer
-    
-      clearInterval(timerFx)
+    clearInterval(timerFx)
 
     endGameEl.textContent = `Game over! Your score is:${time}`
     endGameEl.appendChild(octoCatImg);
