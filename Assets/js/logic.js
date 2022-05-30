@@ -1,5 +1,5 @@
 let currentIndex = 0;
-var time = 60;
+var time = 20;
 let startButtonEl = document.getElementById('start-btn');
 let timerEl = document.getElementById('timer');
 let questionEl = document.getElementById('questions');
@@ -63,12 +63,9 @@ function questionClick (event) {
 
   //console.log(parseInt(questions[currentIndex].answer))
   if (event.target.value != questions[currentIndex].answer){
-    resultEl.textContent = 'Oops!';
     time -= 15;
-    if (time <= 0) {
-        timerEl.textContent = 0
-        endGame();
-      }
+    resultEl.textContent = 'Oops!';
+    
     //sound effects if wrong answer
     sfxIncorrect.play();
     nextQuestion();
@@ -77,7 +74,7 @@ function questionClick (event) {
     resultEl.textContent = 'Correct!'
     // sound effect if correct
     sfxRight.play();
-    time += 5;
+    // time += 5;
 
     nextQuestion();
   } 
@@ -93,6 +90,11 @@ function nextQuestion() {
     if(currentIndex === questions.length - 1 ){
     endGame();
     }
+    else if (time <= 0) {
+      timerEl.textContent = 0
+      time = 0;
+      endGame();
+    }
     else{
     currentIndex++;
     displayQuestions();
@@ -102,10 +104,14 @@ function nextQuestion() {
 function endGame() {
     containerEl.setAttribute('class', 'hide')
     let octoCatImg = document.createElement('img');
+    octoCatImg.setAttribute('class', 'octoKitty')
     octoCatImg.src = "Assets/octocat.png";
+    
     //stop timer
-    clearInterval(timerFx);
-    endGameEl.textContent = "Game Over!"
+    
+      clearInterval(timerFx)
+
+    endGameEl.textContent = `Game over! Your score is:${time}`
     endGameEl.appendChild(octoCatImg);
     
 }
