@@ -109,9 +109,16 @@ function endGame() {
     octoCatImg.src = "Assets/octocat.png";
     //stop timer
     clearInterval(timerFx)
-
     endGameEl.textContent = `Game over! Your score is:${time}`
     endGameEl.appendChild(octoCatImg);
+}
+    function highScores(){
+      let initials = document.getElementById('storeInitials').value;
+      let results = {
+        userIntials: initials,
+        score: time
+      }
+      console.log('results to be set to localStorage', results)
     
 }
 
