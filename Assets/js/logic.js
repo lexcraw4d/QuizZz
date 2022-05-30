@@ -114,19 +114,21 @@ function endGame() {
     endGameEl.appendChild(octoCatImg);
 }
     function highScores(){
+      //gather users initials for highscore list
       let initials = document.getElementById('storeInitials').value.trim();
+      //get previous scores if not set empty array to hold current score
       let scoreArray= JSON.parse(localStorage.getItem("scores")) || [];
       let results = {
         userIntials: initials,
         score: time
       }
-      // Get saved data from localStorage
-     scoreArray.push(results)
+      // Save data to localStorage
+      scoreArray.push(results)
+      localStorage.setItem('scores', JSON.stringify(scoreArray));
 
-     localStorage.setItem('scores', JSON.stringify(scoreArray));
-    //  console.log('scoreArr', scoreArray)
+      //redirect player to highscore page
+      window.location = './highscores.html'
       
-    
 }
 
 
