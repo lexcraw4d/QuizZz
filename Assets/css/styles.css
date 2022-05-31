@@ -5,3 +5,17 @@
 .octoKitty {
     display: flex;
 }
+h1 {
+    display:flex;
+    justify-content: center;
+}
+#game-intro #start-btn {
+    display:flex;
+    justify-content: center;
+}
+
+#finalScore {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

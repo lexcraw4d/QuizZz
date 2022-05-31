@@ -9,6 +9,7 @@ let containerEl = document.getElementById('container');
 let initialsEl = document.getElementById('initials');
 let resultEl = document.getElementById("result");
 let endGameEl = document.getElementById("endGame");
+
 let timerFx;
 // let scoreContainer = []
 //sound effects
